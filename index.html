@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funflix - Netflix Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Funflix</div>
+    <nav>
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#tv-shows" class="nav-link">TV Shows</a>
+      <a href="#movies" class="nav-link">Movies</a>
+      <a href="#my-list" class="nav-link">My List</a>
+    </nav>
+    <div class="header-right">
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search movies...">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="user-profile">
+        <button id="profile-btn" class="profile-btn">
+          <i class="fas fa-user"></i>
+        </button>
+        <div class="profile-dropdown">
+          <div id="user-info" style="display: none;">
+            <span class="user-name"></span>
+            <button id="logout-btn">Logout</button>
+          </div>
+          <div id="auth-buttons">
+            <button id="login-btn">Login</button>
+            <button id="signup-btn">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Auth Modals -->
+  <div id="login-modal" class="modal auth-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="auth-form">
+        <h2>Login to Funflix</h2>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required>
+          </div>
+          <button type="submit" class="auth-submit">Login</button>
+        </form>
+        <p class="auth-switch">
+          Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="signup-modal" class="modal auth-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="auth-form">
+        <h2>Sign Up for Funflix</h2>
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" required>
+          </div>
+          <button type="submit" class="auth-submit">Sign Up</button>
+        </form>
+        <p class="auth-switch">
+          Already have an account? <a href="#" id="switch-to-login">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Movie Details Modal -->
+  <div id="movie-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body">
+        <div class="modal-poster"></div>
+        <div class="modal-info">
+          <h2 class="modal-title"></h2>
+          <div class="modal-meta">
+            <span class="modal-year"></span>
+            <span class="modal-rating"></span>
+            <span class="modal-duration"></span>
+          </div>
+          <p class="modal-description"></p>
+          <div class="modal-actions">
+            <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+            <button class="add-list-btn"><i class="fas fa-plus"></i> My List</button>
+          </div>
+          <div class="modal-cast">
+            <h3>Cast</h3>
+            <p class="cast-list"></p>
+          </div>
+          <div class="modal-genres">
+            <h3>Genres</h3>
+            <div class="genre-tags"></div>
+          </div>
+          <div class="modal-video"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="home" class="section active">
+      <section class="featured">
+        <h1>Featured Movie</h1>
+        <p>Watch the latest blockbuster now!</p>
+        <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+        <button class="add-list-btn"><i class="fas fa-plus"></i> My List</button>
+      </section>
+      <section class="movie-row">
+        <h2>Popular on Funflix</h2>
+        <div class="movies" id="popular-movies"></div>
+      </section>
+      <section class="movie-row">
+        <h2>Trending Now</h2>
+        <div class="movies" id="trending-movies"></div>
+      </section>
+    </section>
+
+    <section id="tv-shows" class="section">
+      <section class="movie-row">
+        <h2>Popular TV Shows</h2>
+        <div class="movies" id="tv-popular"></div>
+      </section>
+      <section class="movie-row">
+        <h2>New Episodes</h2>
+        <div class="movies" id="tv-new"></div>
+      </section>
+    </section>
+
+    <section id="movies" class="section">
+      <section class="movie-row">
+        <h2>Action Movies</h2>
+        <div class="movies" id="action-movies"></div>
+      </section>
+      <section class="movie-row">
+        <h2>Drama Movies</h2>
+        <div class="movies" id="drama-movies"></div>
+      </section>
+      <section class="movie-row">
+        <h2>Sci-Fi & Fantasy</h2>
+        <div class="movies" id="scifi-movies"></div>
+      </section>
+    </section>
+
+    <section id="my-list" class="section">
+      <section class="movie-row">
+        <h2>My Watchlist</h2>
+        <div class="movies" id="watchlist"></div>
+      </section>
+    </section>
+  </main>
+
+  <div class="notification" id="notification"></div>
+  <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,131 @@
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  background: #000;
+  margin: 24px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  transition: height 0.3s ease;
+  display: block;
+}
+
+.video-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+
+.fullscreen-btn {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.fullscreen-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.fullscreen-btn i {
+  font-size: 18px;
+}
+
+/* Fullscreen styles */
+.video-container:fullscreen {
+  background: #000;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border-radius: 0;
+}
+
+.video-container:fullscreen iframe {
+  height: 100vh;
+}
+
+/* Modal styles for better video display */
+#movie-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  overflow: auto;
+}
+
+#movie-modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #141414;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  max-width: 700px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .modal-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 98vw;
+    width: 98vw;
+    padding: 8px 2px;
+  }
+  .video-container iframe {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 4px 0;
+    border-radius: 0;
+  }
+  .video-container iframe {
+    height: 180px;
+  }
+} 
